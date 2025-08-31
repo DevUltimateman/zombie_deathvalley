@@ -583,9 +583,9 @@ teleporter_intro()
 phil_typewriter_intro()
 {
 	text = [];
+	text[text.size] = "Zombie Deathvalley";
+	text[text.size] = "Saturday, March 7th, 1997";
 	text[text.size] = "";
-	text[text.size] = "Location ^3Death Valley";
-	text[text.size] = "Population Unknown";
 
 	intro_hud = [];
 	for(i = 0;  i < text.size; i++)
