@@ -1,0 +1,6 @@
+{
+	map		"zombie_deathvalley"
+	loadscreen	"preview_zombie_deathvalley"
+	longname	"MOD_LEVEL_DEATHVALLEY_CAPS"
+	gametype	"zom"
+}

@@ -1,0 +1,8 @@
+newmtl mtl_veh_iw_hmmv_desert_rubber
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Ks 0.50 0.50 0.50
+map_Kd _images\\~-gvehicle_hmmv_retrofit_c.tga
+map_bump _images\\vehicle_hmmv_retrofit_n.tga
+map_Ks _images\\~~-gvehicle_hmmv_retrofit_sc-~89ef19c4.tga

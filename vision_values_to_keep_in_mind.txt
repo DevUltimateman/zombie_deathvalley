@@ -1,0 +1,24 @@
+original color temp "6484.1797 7876.4233 6320.0000" 
+
+original filmsaturation 0.8561 0.8351 0.6596
+
+csv grab from rawfiles
+
+rawfile,vision/cuba_streets_floodlights.vision
+rawfile,vision/fullahead_betrayal.vision
+rawfile,vision/fullahead_nova6.vision
+
+
+
+
+
+rawfile,vision/rebirth_cargo_container.vision
+rawfile,vision/rebirth_docks.vision
+rawfile,vision/rebirth_cargo_container.vision
+rawfile,vision/rebirth_docks.vision
+
+
+rawfile,vision/river_plane.vision
+rawfile,vision/river_land.vision
+rawfile,vision/river_plane.vision
+rawfile,vision/river_land.vision

@@ -1,0 +1,8 @@
+newmtl mtl_veh_iw_hmmv_props_cloth
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Ks 0.50 0.50 0.50
+map_Kd _images\\~-gvehicle_hmmv_props_c.tga
+map_bump _images\\vehicle_hmmv_props_n.tga
+map_Ks _images\\~~-gvehicle_hmmv_props_sc-rgb~0ce81279.tga

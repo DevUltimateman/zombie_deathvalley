@@ -1,0 +1,8 @@
+newmtl mtl_veh_iw_american_humvee
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Ks 0.50 0.50 0.50
+map_Kd _images\\~-gcamo_humvee_c.tga
+map_bump _images\\camo_humvee_n.tga
+map_Ks _images\\~~-gcamo_humvee_sc-rgb&~-rcam~d58222cc.tga
