@@ -367,7 +367,9 @@ rainy_night_evening_vision()
 	SetDvar( "r_sky_intensity_factor0", 1.7 );
 	setdvar( "r_skyTransition", 1 );
 	SetDvar( "r_exposuretweak", 1 );
-	setdvar( "r_exposurevalue", 2.25 );
+	SetDvar( "r_lighttweaksunlight", 14 ); //new
+	SetDvar( "r_lighttweaksuncolor", "0.2 0.3 0.39" ); //new
+	SetDvar( "r_exposurevalue", 1.025 ); //new
 	
 	//setdvar( "r_lighttweaksunlight", 3); //new
 	//visionSetNaked("river_land", 2 );

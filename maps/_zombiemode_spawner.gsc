@@ -366,21 +366,45 @@ set_zombie_run_cycle( new_move_speed )
 
 	switch(self.zombie_move_speed)
 	{
-	case "walk":
-		var = randomintrange(1, 8);         
-		self set_run_anim( "walk" + var );                         
-		self.run_combatanim = level.scr_anim[self.animname]["walk" + var];
-		break;
-	case "run":                                
-		var = randomintrange(1, 6);
-		self set_run_anim( "run" + var );               
-		self.run_combatanim = level.scr_anim[self.animname]["run" + var];
-		break;
-	case "sprint":                             
-		var = randomintrange(1, 4);
-		self set_run_anim( "sprint" + var );                       
-		self.run_combatanim = level.scr_anim[self.animname]["sprint" + var];
-		break;
+		//DEBUGGIN CASES
+		case "walk":
+			var = randomintrange(1, 2);         
+			self set_run_anim( "sprint" + var );                         
+			self.run_combatanim = level.scr_anim[self.animname]["sprint" + var];
+			break;
+
+		case "run":                                
+			var = randomintrange(1, 2);
+			self set_run_anim( "sprint" + var );               
+			self.run_combatanim = level.scr_anim[self.animname]["sprint" + var];
+			break;
+
+		case "sprint":                             
+			var = randomintrange(1, 2); //1,4 : changed to 1,3 to tet if sprinters are gone
+			self set_run_anim( "sprint" + var );                       
+			self.run_combatanim = level.scr_anim[self.animname]["sprint" + var];
+			break;
+
+		//REAL CASES
+		/*
+		case "walk":
+			var = randomintrange(1, 8);         
+			self set_run_anim( "walk" + var );                         
+			self.run_combatanim = level.scr_anim[self.animname]["walk" + var];
+			break;
+
+		case "run":                                
+			var = randomintrange(1, 6);
+			self set_run_anim( "run" + var );               
+			self.run_combatanim = level.scr_anim[self.animname]["run" + var];
+			break;
+			
+		case "sprint":                             
+			var = randomintrange(1, 3); //1,4 : changed to 1,3 to tet if sprinters are gone
+			self set_run_anim( "sprint" + var );                       
+			self.run_combatanim = level.scr_anim[self.animname]["sprint" + var];
+			break;
+		*/
 	}
 
 //	self thread print3d_ent( self.zombie_move_speed+var, (1,1,1), 2.0, (0,0,72), "", true );

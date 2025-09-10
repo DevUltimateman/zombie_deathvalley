@@ -21,7 +21,7 @@ r_filmContrast                      "1.0625 1.0625 1.0000"
 r_sCurveShoulderStrength            "0.100000" 
 r_sCurveLinearStrength              "0.500000" 
 r_sCurveLinearAngle                 "0.125000" 
-r_sCurveToeStrength                 "0.144700" 
+r_sCurveToeStrength                 "0.144700"  //"0.323490" 
 r_sCurveToeNumerator                "0.010000" 
 r_sCurveToeDenominator              "0.574988" 
 

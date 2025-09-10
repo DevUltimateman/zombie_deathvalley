@@ -227,6 +227,138 @@ zombie_deathvalley_vision_test()
 	}
 }
 
+zone_flag_hack_alphabuild()
+{
+	flag_init( "spawn_to_left" );
+	flag_set( "spawn_to_left" );
+
+	flag_init( "left_road_to_raphat" );
+	flag_set( "left_road_to_raphat" );
+
+	flag_init( "raphat_alleway_to_building" );
+	flag_set( "raphat_alleway_to_building" );
+
+	flag_init( "raphat_downstairs_to_upstairs" );
+	flag_set( "raphat_downstairs_to_upstairs" );
+
+	flag_init( "raphat_upstairs_to_patio" );
+	flag_set( "raphat_upstairs_to_patio" );
+
+	flag_init( "raphat_patio_to_crystal_lake_yard" );
+	flag_set( "raphat_patio_to_crystal_lake_yard" );
+
+	flag_init( "crystal_to_left_road" );
+	flag_set( "crystal_to_left_road" );
+
+	flag_init( "crystal_yard_to_upper_yard" );
+	flag_set( "crystal_yard_to_upper_yard" );
+
+	flag_init( "crystal_yard_upper_to_military" );
+	flag_set( "crystal_yard_upper_to_military" );
+
+	flag_init( "military_blockade_to_curve" );
+	flag_set( "military_blockade_to_curve" );
+
+	flag_init( "military_straight_to_curve" );
+	flag_set( "military_straight_to_curve" );
+
+	flag_init( "police_parking_lot_to_military_road" );
+	flag_set( "police_parking_lot_to_military_road" );
+
+	flag_init( "police_parking_lot_to_yard" );
+	flag_set( "police_parking_lot_to_yard" );
+
+	flag_init( "police_yard_to_inner" );
+	flag_set( "police_yard_to_inner" );
+
+	flag_init( "police_inner_to_alleway" );
+	flag_set( "police_inner_to_alleway" );
+
+	flag_init( "police_inner_to_restaurant_road_parking_lot" );
+	flag_set( "police_inner_to_restaurant_road_parking_lot" );
+
+	flag_init( "police_inner_to_restaurant_alleyway" );
+	flag_set( "police_inner_to_restaurant_alleyway" );
+
+	flag_init( "restaurant_alleway_to_restaurant_main_road" );
+	flag_set( "restaurant_alleway_to_restaurant_main_road" );
+
+	flag_init( "spawn_to_restaurant_road" );
+	flag_set( "spawn_to_restaurant_road" );
+
+	flag_init( "restaurant_road_to_fishing_dock_stairs" );
+	flag_set( "restaurant_road_to_fishing_dock_stairs" );
+
+	flag_init( "fishingstairs_to_up" );
+	flag_set( "fishingstairs_to_up" );
+
+	flag_init( "spawn_to_fishing_dock" );
+	flag_set( "spawn_to_fishing_dock" );
+
+	flag_init( "fishing_dock_to_outside_upstairs" );
+	flag_set( "fishing_dock_to_outside_upstairs" );
+
+	flag_init( "fishing_house_to_forest_bridge" );
+	flag_set( "fishing_house_to_forest_bridge" );
+
+	flag_init( "forest_bridge_to_forest_lower" );
+	flag_set( "forest_bridge_to_forest_lower" );
+
+	flag_init( "forest_lower_to_forest_box" );
+	flag_set( "forest_lower_to_forest_box" );
+
+	flag_init( "forest_lower_to_trainstation_garage" );
+	flag_set( "forest_lower_to_trainstation_garage" );
+
+	flag_init( "forest_box_to_forest_upper" );
+	flag_set( "forest_box_to_forest_upper" );
+
+	flag_init( "forest_upper_to_forest_cave" );
+	flag_set( "forest_upper_to_forest_cave" );
+
+	flag_init( "forest_cave_to_topbuilding_alleyway" );
+	flag_set( "forest_cave_to_topbuilding_alleyway" );
+
+	flag_init( "top_building_to_bridge" );
+	flag_set( "top_building_to_bridge" );
+
+	flag_init( "bridge_to_trainstation" );
+	flag_set( "bridge_to_trainstation" );
+
+	flag_init( "trainstation_hill_entrance_to_yard" );
+	flag_set( "trainstation_hill_entrance_to_yard" );
+
+	flag_init( "cave_entrance_to_trainstation_fix_location" );
+	flag_set( "cave_entrance_to_trainstation_fix_location" );
+
+	flag_init( "fix_location_to_outside" );
+	flag_set( "fix_location_to_outside" );
+
+	flag_init( "fix_location_to_station_yard" );
+	flag_set( "fix_location_to_station_yard" );
+
+	flag_init( "fix_location_to_station_cave" );
+	flag_set( "fix_location_to_station_cave" );
+
+	flag_init( "station_yard_to_right_tunnel" );
+	flag_set( "station_yard_to_right_tunnel" );
+
+	flag_init( "station_right_tunnel_to_left_tunnel" );
+	flag_set( "station_right_tunnel_to_left_tunnel" );
+
+	flag_init( "left_tunnel_to_station_entrance_floor" );
+	flag_set( "left_tunnel_to_station_entrance_floor" );
+
+	flag_init( "station_entrance_to_first_floor" );
+	flag_set( "station_entrance_to_first_floor" );
+
+	flag_init( "station_mudvalley_to_lowerfloor" );
+	flag_set( "station_mudvalley_to_lowerfloor" );
+
+	flag_init( "station_mudvalley_to_station_cave" );
+	flag_set( "station_mudvalley_to_station_cave" );
+}
+
 zombie_deathvalley_initial_vision_trigger()
 {
 	switcher = getent( "upvis", "targetname" );
@@ -237,9 +369,11 @@ zombie_deathvalley_initial_vision_trigger()
 		iPrintLnBold( who.name + " is inside of the initial Vision Trigger!" );
 		//thread maps\zombie_deathvalley_arts::nightvis();
 		thread maps\zombie_deathvalley_arts::rainy_night_evening_vision();
-		who setclientdvar( "r_lighttweaksunlight", 2.5 );
-		who setclientdvar( "r_lighttweaksuncolor", ( 0.2, 0.3, 0.37 ) );
+		who setclientdvar( "r_lighttweaksunlight", 14 ); //new
+		who setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.39" ); //new
+		who setclientdvar( "r_exposurevalue", 1.025 ); //new
 		who setclientdvar( "r_skyTransition", 1 );
+		who zombie_deathvalley_bloom_tweaks();
 
 
 		wait 10;
@@ -253,6 +387,39 @@ set_view_deathvalley_green( ent )
 	//ent setclientdvar( "r_lighttwekaunscolor", ( 0.2, 0.4, 0.6 ) );
 }
 
+zombie_deathvalley_bloom_tweaks()
+{
+	self setclientdvar("r_bloomtweaks", 1 );
+
+	self setclientdvar("r_bloomtintweights",  "0.272 0.272 0.272 0"  );
+	self setclientdvar("r_bloomtintscale", "0 0 0 1"  );
+	self setclientdvar("r_bloomExpansionControl", "0.6 0.6 0.6 0.6"  );
+
+	self setclientdvar("r_sCurveShoulderStrength", .187 );
+	self setclientdvar("r_sCurveToeStrength", .35 );
+	self setclientdvar("r_sCurveToeNumerator", .587 );
+
+	self setclientdvar("r_bloomStreakXlevels0", "0.33 0.33 0.33 1"  );
+	self setclientdvar("r_bloomStreakXTint", "0.085 0.05 0.05 0.05"  );
+	self setclientdvar("r_bloomStreakXTintControl", "0.33 0.33 0.33 1" );
+
+	self setclientdvar("r_bloomtintweights", "0.272 0.272 0.272 0"  );
+	self setclientdvar("r_bloomStreakYlevels0", "0.25 .5 0.25 1"  );
+	self setclientdvar("r_bloomStreakYTint", "0.029 0.09 0.05 0.15"  );
+	self setclientdvar("r_bloomStreakYTintControl",  "0.33 0.33 0.33 1" );
+
+	self setclientdvar( "r_lighttweaksunlight", 14 );
+	self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.39" );
+	self setclientdvar( "r_exposurevalue", 1.025 );
+
+
+
+
+	//self setclientdvar("", );
+	//self setclientdvar("", );
+	//self setclientdvar("", );
+	//self setclientdvar("", );
+}
 zombie_deathvalley_trigger_multiple_vision_test()
 {
 	switcher = getent( "trig2_env", "targetname" );
@@ -269,7 +436,7 @@ zombie_deathvalley_trigger_multiple_vision_test()
 	list[ list.size ] = "cuba_streets_floodlights";
 	list[ list.size ] = "fullahead_betrayal";
 	list[ list.size ] = "fullahead_nova6";
-	list[ list.size ] = "rebirth";
+	list[ list.size ] = "rebirth"; //nice bloom
 	list[ list.size ] = "rebirth_cargo_container";
 	list[ list.size ] = "rebirth_docks";
 	list[ list.size ] = "rebirth_gas_attack";
@@ -783,6 +950,7 @@ zombie_deathvalley_zone_init()
 {
 	flag_init( "always_on" );
 	flag_set( "always_on" );
+	zone_flag_hack_alphabuild();
 
 	// foyer_zone
 	add_adjacent_zone( "test_zone", "test_zone", "always_on" );	
