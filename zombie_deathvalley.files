@@ -415,6 +415,7 @@ images\zombiecoast_water_alpha_c.iwi
 localizedstrings\mod.str
 maps\_weather.gsc
 maps\_zombiemode.gsc
+maps\_zombiemode_ai_dogs.gsc
 maps\_zombiemode_custom_powerups.gsc
 maps\_zombiemode_origins_mystery_box.gsc
 maps\_zombiemode_pack_puch_origins.gsc

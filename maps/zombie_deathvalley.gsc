@@ -115,9 +115,57 @@ main()
 	level.ignore_spawner_func = ::zombie_deathvalley_ignore_spawner;
 
 	level.zone_manager_init_func = ::zombie_deathvalley_zone_init;
-	init_zones[0] = "test_zone";
+
+	init_zones = [];
+	init_zones[init_zones.size] = "test_zone"; //spawn
+	//to the left from spawn
+	init_zones[init_zones.size] = "zone_main_road_left";
+	init_zones[init_zones.size] = "zone_hallway_raphat";
+	init_zones[init_zones.size] = "zone_raphat_downstairs";
+	init_zones[init_zones.size] = "zone_raphat_upstairs";
+	init_zones[init_zones.size] = "zone_raphat_patio";
+	//outside from raphat to crystal lake cabins
+	init_zones[init_zones.size] = "zone_crystal_lake_yard";
+	init_zones[init_zones.size] = "zone_crystal_lake_yard_upper";
+	init_zones[init_zones.size] = "zone_military_blockade";
+	init_zones[init_zones.size] = "zone_military_curve";
+	init_zones[init_zones.size] = "zone_military_road_straight";
+	init_zones[init_zones.size] = "zone_parking_lot_police_st";
+	init_zones[init_zones.size] = "zone_police_st_yard";
+	init_zones[init_zones.size] = "zone_police_st_inner_yard";
+	init_zones[init_zones.size] = "zone_police_st_alleway";
+
+	//to rightside from spawn in order
+	init_zones[init_zones.size] = "zone_fishing_factory_dock";
+	init_zones[init_zones.size] = "zone_fishing_factory_upper_deck";
+	init_zones[init_zones.size] = "zone_forest_bridge";
+	init_zones[init_zones.size] = "zone_forest_after_bridge";
+	init_zones[init_zones.size] = "zone_forest_box";
+	init_zones[init_zones.size] = "zone_forest_cave_upper";
+	init_zones[init_zones.size] = "zone_forest_cave";
+	init_zones[init_zones.size] = "zone_top_building_alleway";
+	init_zones[init_zones.size] = "zone_trainstation_bridge";
+	init_zones[init_zones.size] = "zone_trainstation_upper_hill_entrance";
+	init_zones[init_zones.size] = "zone_trainstation_upper_hill_post";
+
+	//trainstation building to cave to trainfix location
+	init_zones[init_zones.size] = "zone_trainstation_building_lower_floor";
+	init_zones[init_zones.size] = "zone_trainstation_mudvalley_below_bridge";
+	init_zones[init_zones.size] = "zone_trainstation_cave";
+	//debris between trainstation cave & fix_location_outside on the train
+	init_zones[init_zones.size] = "zone_trainstation_fix_location_outside";
+	init_zones[init_zones.size] = "zone_trainstation_fix_location";
+	init_zones[init_zones.size] = "zone_cave_entrance_trainstation"; //this goes back to zone_forest_after_bridge
+	init_zones[init_zones.size] = "zone_trainstation_yard";
+	//buyable debree between yard and right tunnel ramp entrance
+	init_zones[init_zones.size] = "zone_trainstation_right_tunnel";
+	init_zones[init_zones.size] = "zone_trainstation_left_tunnel"; //this also connects to "zone_trainstation_building_lower_flor
+	//init_zones[init_zones.size] = "zone_trainstation_yard";
 	//init_zones[0] = "foyer_zone";
 	//init_zones[1] = "foyer2_zone";	
+	
+	
+	
 	level thread maps\_zombiemode_zone_manager::manage_zones( init_zones );
 
 	level thread maps\_zombiemode_auto_turret::init();
@@ -200,10 +248,9 @@ zombie_deathvalley_initial_vision_trigger()
 
 set_view_deathvalley_green( ent )
 {
-	visionSetNaked( "creek_1_rain", 2 );
-	ent setlicentdvar( "r_lightthweaksunlight", 2.85 );
-	ent setclientdvar( "r_lighttwekaunscolor", ( 0.2, 0.4, 0.6 ) );
-	ent setclientdvar( )
+	//visionSetNaked( "creek_1_rain", 2 );
+	//ent setlicentdvar( "r_lightthweaksunlight", 2.85 );
+	//ent setclientdvar( "r_lighttwekaunscolor", ( 0.2, 0.4, 0.6 ) );
 }
 
 zombie_deathvalley_trigger_multiple_vision_test()
@@ -740,6 +787,115 @@ zombie_deathvalley_zone_init()
 	// foyer_zone
 	add_adjacent_zone( "test_zone", "test_zone", "always_on" );	
 
+
+	//spawn to left side
+	add_adjacent_zone( "test_zone", "zone_main_road_left", "spawn_to_left" );
+	//left main road to raphat alley
+	add_adjacent_zone( "zone_main_road_left", "zone_hallway_raphat", "left_road_to_raphat" );
+	//raphat alley to raphat building
+	add_adjacent_zone( "zone_hallway_raphat", "zone_raphat_downstairs", "raphat_alleway_to_building" );
+	
+	add_adjacent_zone( "zone_raphat_downstairs", "zone_raphat_upstairs", "raphat_downstairs_to_upstairs" );
+	
+	add_adjacent_zone( "zone_raphat_upstairs", "zone_raphat_patio", "raphat_upstairs_to_patio" );
+	
+	add_adjacent_zone( "zone_raphat_patio", "zone_crystal_lake_yard", "raphat_patio_to_crystal_lake_yard" );
+	
+	add_adjacent_zone( "zone_crystal_lake_yard", "zone_main_road_left", "crystal_to_left_road" );
+	
+	add_adjacent_zone( "zone_crystal_lake_yard", "zone_crystal_lake_yard_upper", "crystal_yard_to_upper_yard" );
+	
+	add_adjacent_zone( "zone_crystal_lake_yard_upper", "zone_military_blockade", "crystal_yard_upper_to_military" );
+	
+	add_adjacent_zone( "zone_military_blockade", "zone_military_curve", "military_blockade_to_curve" );
+	
+	add_adjacent_zone( "zone_military_curve", "zone_military_road_straight", "military_straight_to_curve" );
+	
+	add_adjacent_zone( "zone_military_road_straight", "zone_parking_lot_police_st", "police_parking_lot_to_military_road" );
+	
+	add_adjacent_zone( "zone_parking_lot_police_st", "zone_police_st_yard", "police_parking_lot_to_yard" );
+	
+	//add_adjacent_zone( "zone_police_st_yard", "police_HOUse_zone", "" );
+	
+	add_adjacent_zone( "zone_police_st_yard", "zone_police_st_inner_yard", "police_yard_to_inner" );
+	
+	add_adjacent_zone( "zone_police_st_inner_yard", "zone_police_st_alleway", "police_inner_to_alleway" );
+	
+	add_adjacent_zone( "zone_police_st_inner_yard", "zone_restaurant_main_road", "police_inner_to_restaurant_road_parking_lot" );
+	
+	add_adjacent_zone( "zone_police_st_alleway", "zone_restaurant_alleyway", "police_inner_to_restaurant_alleyway" );
+	
+	add_adjacent_zone( "zone_restaurant_alleyway", "zone_restaurant_main_road", "restaurant_alleway_to_restaurant_main_road" );
+	
+	add_adjacent_zone( "zone_restaurant_main_road", "test_zone", "spawn_to_restaurant_road" );
+	
+	add_adjacent_zone( "zone_restaurant_main_road", "zone_fishing_factory_dockside_stairs", "restaurant_road_to_fishing_dock_stairs" );
+	
+	add_adjacent_zone( "zone_fishing_factory_dockside_stairs", "zone_fishing_factory_upper_deck", "fishingstairs_to_up" );
+	
+	add_adjacent_zone( "zone_fishing_factory_dock", "test_zone", "spawn_to_fishing_dock" );
+	
+	add_adjacent_zone( "zone_fishing_factory_dock", "zone_fishing_factory_upper_deck", "fishing_dock_to_outside_upstairs" );
+	
+	add_adjacent_zone( "zone_fishing_factory_upper_deck", "zone_forest_bridge", "fishing_house_to_forest_bridge" );
+	
+	add_adjacent_zone( "zone_forest_bridge", "zone_forest_after_bridge", "forest_bridge_to_forest_lower" );
+	
+	add_adjacent_zone( "zone_forest_after_bridge", "zone_forest_box", "forest_lower_to_forest_box" );
+	
+	add_adjacent_zone( "zone_forest_after_bridge", "zone_cave_entrance_trainstation", "forest_lower_to_trainstation_garage" );
+	
+	add_adjacent_zone( "zone_forest_box", "zone_forest_cave_upper", "forest_box_to_forest_upper" );
+	
+	//add_adjacent_zone( "zone_forest_cave_upper", "zone_platform", "" );
+	
+	add_adjacent_zone( "zone_forest_cave_upper", "zone_forest_cave", "forest_upper_to_forest_cave" );
+	
+	add_adjacent_zone( "zone_forest_cave", "zone_top_building_alleway", "forest_cave_to_topbuilding_alleyway" );
+	
+	add_adjacent_zone( "zone_top_building_alleway", "zone_trainstation_bridge", "top_building_to_bridge" );
+	
+	add_adjacent_zone( "zone_trainstation_bridge", "zone_trainstation_upper_hill_entrance", "bridge_to_trainstation" );
+	
+	add_adjacent_zone( "zone_trainstation_upper_hill_entrance", "zone_trainstation_upper_hill_post", "trainstation_hill_entrance_to_yard" );
+	
+	add_adjacent_zone( "zone_cave_entrance_trainstation", "zone_trainstation_fix_location", "cave_entrance_to_trainstation_fix_location" );
+
+	
+	add_adjacent_zone( "zone_trainstation_fix_location", "zone_trainstation_fix_location_outside", "fix_location_to_outside" );
+	
+	add_adjacent_zone( "zone_trainstation_fix_location_outside", "zone_trainstation_yard", "fix_location_to_station_yard" );
+	
+	add_adjacent_zone( "zone_trainstation_fix_location_outside", "zone_trainstation_cave", "fix_location_to_station_cave" );
+	
+	add_adjacent_zone( "zone_trainstation_yard", "zone_trainstation_right_tunnel", "station_yard_to_right_tunnel" );
+	
+	add_adjacent_zone( "zone_trainstation_right_tunnel", "zone_trainstation_left_tunnel", "station_right_tunnel_to_left_tunnel" );
+
+	add_adjacent_zone( "zone_trainstation_left_tunnel", "zone_trainstation_building_entrance", "left_tunnel_to_station_entrance_floor" );
+	
+	add_adjacent_zone( "zone_trainstation_building_entrance", "zone_trainstation_building_lower_floor", "station_entrance_to_first_floor" );
+	
+	add_adjacent_zone( "zone_trainstation_building_lower_floor", "zone_trainstation_mudvalley_below_bridge", "station_mudvalley_to_lowerfloor" );
+
+	add_adjacent_zone( "zone_trainstation_mudvalley_below_bridge", "zone_trainstation_cave", "station_mudvalley_to_station_cave" );
+	/*
+	add_adjacent_zone( "", "", "" );
+	
+	add_adjacent_zone( "", "", "" );
+
+	add_adjacent_zone( "", "", "" );
+	
+	add_adjacent_zone( "", "", "" );
+	
+	add_adjacent_zone( "", "", "" );
+
+	add_adjacent_zone( "", "", "" );
+	
+	add_adjacent_zone( "", "", "" );
+	
+	add_adjacent_zone( "", "", "" );
+	*/
 	// theater_zone
 	add_adjacent_zone( "test_zone", "zone1", "enter_zone1" );
 	add_adjacent_zone( "zone1", "zone2", "enter_zone2" );
