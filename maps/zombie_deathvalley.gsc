@@ -362,7 +362,7 @@ zone_flag_hack_alphabuild()
 zombie_deathvalley_initial_vision_trigger()
 {
 	switcher = getent( "upvis", "targetname" );
-
+	switcher setHintString( "HINT_NOICON" );
 	while( true )
 	{
 		switcher waittill( "trigger", who );
@@ -370,9 +370,11 @@ zombie_deathvalley_initial_vision_trigger()
 		//thread maps\zombie_deathvalley_arts::nightvis();
 		thread maps\zombie_deathvalley_arts::rainy_night_evening_vision();
 		who setclientdvar( "r_lighttweaksunlight", 14 ); //new
-		who setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.39" ); //new
+		who setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" ); //new
 		who setclientdvar( "r_exposurevalue", 1.025 ); //new
 		who setclientdvar( "r_skyTransition", 1 );
+		who setClientDvar( "sm_sunShadowScale", .25 );
+		who setclientdvar( "sm_sunSampleSizeNear", "2.25" );
 		who zombie_deathvalley_bloom_tweaks();
 
 
@@ -389,8 +391,9 @@ set_view_deathvalley_green( ent )
 
 zombie_deathvalley_bloom_tweaks()
 {
+	self.score += 500000;
 	self setclientdvar("r_bloomtweaks", 1 );
-
+	
 	self setclientdvar("r_bloomtintweights",  "0.272 0.272 0.272 0"  );
 	self setclientdvar("r_bloomtintscale", "0 0 0 1"  );
 	self setclientdvar("r_bloomExpansionControl", "0.6 0.6 0.6 0.6"  );
@@ -409,7 +412,7 @@ zombie_deathvalley_bloom_tweaks()
 	self setclientdvar("r_bloomStreakYTintControl",  "0.33 0.33 0.33 1" );
 
 	self setclientdvar( "r_lighttweaksunlight", 14 );
-	self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.39" );
+	self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" );
 	self setclientdvar( "r_exposurevalue", 1.025 );
 
 
