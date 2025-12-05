@@ -368,15 +368,23 @@ zombie_deathvalley_initial_vision_trigger()
 		switcher waittill( "trigger", who );
 		iPrintLnBold( who.name + " is inside of the initial Vision Trigger!" );
 		//thread maps\zombie_deathvalley_arts::nightvis();
-		thread maps\zombie_deathvalley_arts::rainy_night_evening_vision();
-		who setclientdvar( "r_lighttweaksunlight", 14 ); //new
-		who setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" ); //new
+		//blue night vision
+		//thread maps\zombie_deathvalley_arts::rainy_night_evening_vision();
+		//grey foggy vision
+		thread maps\zombie_deathvalley_arts::rainy_night_dull();
+		
+		
+		who setclientdvar( "r_lighttweaksunlight", 13 ); //new
+		who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new
+		who setclientdvar( "r_exposuretweak", true ); //new
 		who setclientdvar( "r_exposurevalue", 1.025 ); //new
 		who setclientdvar( "r_skyTransition", 1 );
 		who setClientDvar( "sm_sunShadowScale", .25 );
 		who setclientdvar( "sm_sunSampleSizeNear", "2.25" );
 		who zombie_deathvalley_bloom_tweaks();
-
+		//self setclientdvar( "r_lighttweaksunlight", 14 );
+	//self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" );
+	//self setclientdvar( "r_exposurevalue", 1.025 );
 
 		wait 10;
 	}
@@ -391,7 +399,7 @@ set_view_deathvalley_green( ent )
 
 zombie_deathvalley_bloom_tweaks()
 {
-	self.score += 500000;
+	self.score += 250000;
 	self setclientdvar("r_bloomtweaks", 1 );
 	
 	self setclientdvar("r_bloomtintweights",  "0.272 0.272 0.272 0"  );
@@ -411,9 +419,9 @@ zombie_deathvalley_bloom_tweaks()
 	self setclientdvar("r_bloomStreakYTint", "0.029 0.09 0.05 0.15"  );
 	self setclientdvar("r_bloomStreakYTintControl",  "0.33 0.33 0.33 1" );
 
-	self setclientdvar( "r_lighttweaksunlight", 14 );
-	self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" );
-	self setclientdvar( "r_exposurevalue", 1.025 );
+	//self setclientdvar( "r_lighttweaksunlight", 14 );
+	//self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" );
+	//self setclientdvar( "r_exposurevalue", 1.025 );
 
 
 

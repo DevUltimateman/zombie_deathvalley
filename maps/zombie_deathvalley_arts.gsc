@@ -312,6 +312,43 @@ orange_sunny_evening_vision()
 	visionSetNaked("rebirth_cargo_container", 2 );
 }
 
+rainy_night_dull()
+{
+	start_dist = 75.319;
+	half_dist = 340.993;
+	half_height = 1350;//1022.46;
+	base_height = 100;//-1300.89;
+	fog_r = 0.329412;
+	fog_g = 0.2815686;
+	fog_b = 0.271373;
+	fog_scale = 6.93566;
+	//sun_col_r = 0.996078;
+	//sun_col_g = 0.811765;
+	//sun_col_b = 0.47451;
+	sun_col_r = 0.216078;
+	sun_col_g = 0.111765;
+	sun_col_b = 0.09451;
+	sun_dir_x = -0.395724;
+	sun_dir_y = 0.704049;
+	sun_dir_z = 0.589676;
+	sun_start_ang = 0;
+	sun_stop_ang = 90.4145;
+	time = 0;
+	max_fog_opacity = 0.803343;
+
+
+
+
+	setVolFog(start_dist, half_dist, half_height, base_height, fog_r, fog_g, fog_b, fog_scale,
+		sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
+		sun_stop_ang, time, max_fog_opacity);
+		
+		SetSavedDvar( "r_skyColorTemp", 10000.0 );
+		VisionSetNaked( "vorkuta_warehouse", 0 );
+
+}
+
+
 
 rainy_night_evening_vision()
 {
@@ -334,9 +371,9 @@ rainy_night_evening_vision()
 
 	*/
 	start_dist = 118.921;
-	half_dist = 757.01;
-	half_height = 2000.331;
-	base_height = 500.23;
+	half_dist = 500.01; //sep 16th, was 757.01, testing new value
+	half_height = 2000.331;//new old 2000.331
+	base_height = 500.23; //new old 500.23
 
 	//great with purple sunn
 	fog_r = 0.1488235;
