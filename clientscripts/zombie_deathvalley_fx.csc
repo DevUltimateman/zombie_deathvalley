@@ -284,31 +284,38 @@ dogs_fog_back_to_normal()
 	{
 		level waittill( "dog_stop" );
 
-		start_dist = 118.921;
-	half_dist = 757.01;
-	half_height = 2000.331;
-	base_height = 500.23;
+		start_dist = 25.319;
+		half_dist = 1200.993; //normally 340 /increasing this val seemed to put the fog top lower
+		half_height = 2350;//1022.46; //increasing this semmed to put the fog medium a lot higher
+		base_height = 100;//-1300.89;
+		fog_r = 0.629412;//first .value is doubled from previous
+		fog_g = 0.4815686;//first .value is doubled from previous
+		fog_b = 0.471373;//first .value is doubled from previous
+		fog_scale = 2.93566;
+		//sun_col_r = 0.996078;
+		//sun_col_g = 0.811765;
+		//sun_col_b = 0.47451;
+		sun_col_r = 0.416078; //first .value is doubled from previous
+		sun_col_g = 0.211765;//first .value is doubled from previous
+		sun_col_b = 0.19451;//first .value is doubled from previous
+		sun_dir_x = -0.395724;
+		sun_dir_y = 0.704049;
+		sun_dir_z = 0.589676;
+		sun_start_ang = 0;
+		sun_stop_ang = 90.4145;
+		time = 0;
+		max_fog_opacity = 0.9; //quite literally the transparentsetting of alpha fog
+		//higher = more dense fog, lower = less dense fog
 
-	//great with purple sunn
-	fog_r = 0.1488235;
-	fog_g = 0.111569;
-	fog_b = 0.25902;
-	fog_scale = 3.41725;
-	sun_col_r = 0.183137;
-	sun_col_g = 0.092157;
-	sun_col_b = 0.211765;
-	sun_dir_x = -0.360298;//-0.760298;
-	sun_dir_y = -0.339782;
-	sun_dir_z = 0.55362;
-	sun_start_ang = 19.4171;
-	sun_stop_ang = 79.2287;
-	time = 5;
-	max_fog_opacity = 0.734995;
-		
-	
+
+
+
 		setVolFog(start_dist, half_dist, half_height, base_height, fog_r, fog_g, fog_b, fog_scale,
-		sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
-		sun_stop_ang, time, max_fog_opacity);
+			sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
+			sun_stop_ang, time, max_fog_opacity);
+			
+			SetSavedDvar( "r_skyColorTemp", 10000.0 );
+			VisionSetNaked( "vorkuta_warehouse", 0 );
 
 	}
 }

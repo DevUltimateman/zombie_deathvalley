@@ -72,7 +72,7 @@ main()
 	
 	level.quad_move_speed = 350;
 	level.quad_traverse_death_fx = maps\zombie_theater_quad::quad_traverse_death_fx;
-	level.quad_explode = true;
+	level.quad_explode = true; //try this to false, quads could be good but the explosions are annoying
 
 	level.dog_spawn_func = maps\_zombiemode_ai_dogs::dog_spawn_factory_logic;
 	level.exit_level_func = ::zombie_deathvalley_exit_level;
@@ -366,11 +366,6 @@ zombie_deathvalley_initial_vision_trigger()
 	while( true )
 	{
 		switcher waittill( "trigger", who );
-		iPrintLnBold( who.name + " is inside of the initial Vision Trigger!" );
-		//thread maps\zombie_deathvalley_arts::nightvis();
-		//blue night vision
-		//thread maps\zombie_deathvalley_arts::rainy_night_evening_vision();
-		//grey foggy vision
 		thread maps\zombie_deathvalley_arts::rainy_night_dull();
 		
 		
@@ -381,6 +376,9 @@ zombie_deathvalley_initial_vision_trigger()
 		who setclientdvar( "r_skyTransition", 1 );
 		who setClientDvar( "sm_sunShadowScale", .25 );
 		who setclientdvar( "sm_sunSampleSizeNear", "2.25" );
+		who setclientdvar( "r_skyColorTemp", 4500 ); //new
+		who setclientdvar( "r_sky_intensity_usedebugvalues", true ); //new
+		who setclientdvar( "r_sky_intensity_factor0", 5 ); //new
 		who zombie_deathvalley_bloom_tweaks();
 		//self setclientdvar( "r_lighttweaksunlight", 14 );
 	//self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" );

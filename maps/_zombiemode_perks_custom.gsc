@@ -32,7 +32,7 @@ init()
 	PrecacheItem( "zombie_perk_bottle" );
 
 	set_zombie_var( "zombie_perk_limit",							12 ); // Limit Perks
-	set_zombie_var( "zombie_perk_give_all",							true ); // All Perks
+	set_zombie_var( "zombie_perk_give_all",							false ); // All Perks, not for now Ultimateman
 	set_zombie_var( "zombie_perk_hud_type",							"normal" ); // HUD Type: normal | cw
 	set_zombie_var( "zombie_perk_juggernaut_health",	250 );
 	set_zombie_var( "zombie_player_health",				150 );

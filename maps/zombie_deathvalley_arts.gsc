@@ -314,27 +314,31 @@ orange_sunny_evening_vision()
 
 rainy_night_dull()
 {
-	start_dist = 75.319;
-	half_dist = 340.993;
-	half_height = 1350;//1022.46;
+	//This fog style could use r_skyColorTemp set to 4500 for some orangeish tint
+	//this fog style could use r_sky_intensity_factor0 set to 5 for a bit more brightness
+	//this fog style could use r_sky_intensity_usedebugvalues set to true
+	start_dist = 25.319;
+	half_dist = 1200.993; //normally 340 /increasing this val seemed to put the fog top lower
+	half_height = 2350;//1022.46; //increasing this semmed to put the fog medium a lot higher
 	base_height = 100;//-1300.89;
-	fog_r = 0.329412;
-	fog_g = 0.2815686;
-	fog_b = 0.271373;
-	fog_scale = 6.93566;
+	fog_r = 0.629412;//first .value is doubled from previous
+	fog_g = 0.4815686;//first .value is doubled from previous
+	fog_b = 0.471373;//first .value is doubled from previous
+	fog_scale = 2.93566;
 	//sun_col_r = 0.996078;
 	//sun_col_g = 0.811765;
 	//sun_col_b = 0.47451;
-	sun_col_r = 0.216078;
-	sun_col_g = 0.111765;
-	sun_col_b = 0.09451;
+	sun_col_r = 0.416078; //first .value is doubled from previous
+	sun_col_g = 0.211765;//first .value is doubled from previous
+	sun_col_b = 0.19451;//first .value is doubled from previous
 	sun_dir_x = -0.395724;
 	sun_dir_y = 0.704049;
 	sun_dir_z = 0.589676;
 	sun_start_ang = 0;
 	sun_stop_ang = 90.4145;
 	time = 0;
-	max_fog_opacity = 0.803343;
+	max_fog_opacity = 0.9; //quite literally the transparentsetting of alpha fog
+	//higher = more dense fog, lower = less dense fog
 
 
 
@@ -343,7 +347,7 @@ rainy_night_dull()
 		sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
 		sun_stop_ang, time, max_fog_opacity);
 		
-		SetSavedDvar( "r_skyColorTemp", 10000.0 );
+		SetSavedDvar( "r_skyColorTemp", 4500 );
 		VisionSetNaked( "vorkuta_warehouse", 0 );
 
 }

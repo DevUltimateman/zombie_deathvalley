@@ -5,7 +5,7 @@
 #include maps\_zombiemode_utility; 
 #include maps\_busing;
 
-#using_animtree( "generic_human" ); 
+#using_animtree( "generic_human" );
 
 main()
 {
