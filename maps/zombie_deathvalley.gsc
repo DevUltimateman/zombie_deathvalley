@@ -97,7 +97,8 @@ main()
 	//WEATHER_RAIN_THREAD
 	thread weather_control();
 	
-	
+	//INITIAL VISUALS THREAD
+	thread all_players_ready_visuals();
 	
 	
 	// maps\_zombiemode_timer::init();
@@ -172,24 +173,37 @@ main()
 
 	init_sounds();
 	level thread add_powerups_after_round_1();
-	level.zombie_visionset = "creek_1_rain";
-	visionsetnaked( "creek_1_rain", 0 );
 
+
+	SetSavedDvar( "r_skyColorTemp", 4500 );
+	level.zombie_visionset = "vorkuta_warehouse";
+	VisionSetNaked( "vorkuta_warehouse", 0 );
 	//maps\zombie_theater_teleporter::teleport_pad_hide_use();
 
 	//level.round_number = 1245;
 }
 
-initial_visuals()
+
+all_players_ready_visuals()
 {
-	//&flag_wait( "all_players_connected" );
-	visionsetnaked( "creek_1_rain", 2 );
-	thread maps\zombie_deathvalley_arts::nightvis();
-	//&&%%&&level.players[0] setclientdvar( "r_lighttweaksuncolor", ( 0.2, 0.35, 0.45) );
-	//level.players[0] setclientdvar( "r_lighttweaksunlight", 4 );
-	//level.players[0] setclientdvar( "r_exposuretweak", true );
-	//level.players[0] setclientdvar( "r_exposurevalue", 4.5 );
-	iPrintLnBold( "Initial visuals applied" );
+	thread maps\zombie_deathvalley_arts::rainy_night_dull();
+	flag_wait( "all_players_spawned" );	
+	players = getplayers();
+	for( i = 0; i < players.size; i++ )
+	{
+		players[i] setclientdvar( "r_lighttweaksunlight", 13 ); //new
+		players[i] setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new
+		players[i] setclientdvar( "r_exposuretweak", true ); //new
+		players[i] setclientdvar( "r_exposurevalue", 1.025 ); //new
+		players[i] setclientdvar( "r_skyTransition", 1 );
+		players[i] setClientDvar( "sm_sunShadowScale", .25 );
+		players[i] setclientdvar( "sm_sunSampleSizeNear", "2.25" );
+		players[i] setclientdvar( "r_skyColorTemp", 4500 ); //new
+		players[i] setclientdvar( "r_sky_intensity_usedebugvalues", true ); //new
+		players[i] setclientdvar( "r_sky_intensity_factor0", 5 ); //new
+		players[i] zombie_deathvalley_bloom_tweaks();
+	}
+		
 }
 zombie_deathvalley_vision_test()
 {
