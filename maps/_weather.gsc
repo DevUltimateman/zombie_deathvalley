@@ -131,8 +131,9 @@ playerWeather()
 		players[i] thread player_weather_loop();
 	}
 	
+	//depreciated, ultimateman DEC 2025
 	// SRS 5/3/2008: For the onPlayerSpawn function in _load
-//	level.playerWeatherStarted = true;
+	//	level.playerWeatherStarted = true;
 }
 
 player_weather_loop()

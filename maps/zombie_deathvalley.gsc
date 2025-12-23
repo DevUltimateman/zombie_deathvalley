@@ -162,8 +162,32 @@ main()
 	init_zones[init_zones.size] = "zone_trainstation_right_tunnel";
 	init_zones[init_zones.size] = "zone_trainstation_left_tunnel"; //this also connects to "zone_trainstation_building_lower_flor
 	//init_zones[init_zones.size] = "zone_trainstation_yard";
+
+	//spawn room to lighthouse waay
+	init_zones[init_zones.size] = "zone_lightkeeper_cave";
+	init_zones[init_zones.size] = "zone_lightkeeper_yard";
+	init_zones[init_zones.size] = "zone_lightkeeper_yard_front";
+	init_zones[init_zones.size] = "zone_lightkeeper_lighthouse";
+	init_zones[init_zones.size] = "zone_lightkeeper_bridge";
+	init_zones[init_zones.size] = "zone_lightkeeper_house";
+	init_zones[init_zones.size] = "zone_lightkeeper_house_upstairs_balcony";
+	init_zones[init_zones.size] = "zone_lightkeeper_road";
 	//init_zones[0] = "foyer_zone";
 	//init_zones[1] = "foyer2_zone";	
+
+
+	//dock factory additional volumes
+	init_zones[init_zones.size] = "zone_fishing_factory_dock_inner";
+	init_zones[init_zones.size] = "zone_fishing_factory_dock_lower_floor";
+	init_zones[init_zones.size] = "zone_fishing_factory_dockside_stairs";
+	//add dock to lower floor adjacent check
+
+
+	//trainstation & yard additional volumes
+	init_zones[init_zones.size] = "zone_trainstation_bridge_crossing";
+	init_zones[init_zones.size] = "zone_trainstation_upper_yard";
+	init_zones[init_zones.size] = "zone_trainstation_upper_yard_hillarea";
+	init_zones[init_zones.size] = "zone_trainstation_upper_hill_staircase";
 	
 	
 	
@@ -371,6 +395,57 @@ zone_flag_hack_alphabuild()
 
 	flag_init( "station_mudvalley_to_station_cave" );
 	flag_set( "station_mudvalley_to_station_cave" );
+
+	flag_init("spawn_to_lightkeeper_cave" );
+	flag_set( "spawn_to_lightkeeper_cave");
+
+	flag_init("keeper_cave_to_lightkeeper_yard" );
+	flag_set("keeper_cave_to_lightkeeper_yard" );
+
+	flag_init( "lightkeeper_yard_to_frontyard" );
+	flag_set("lightkeeper_yard_to_frontyard"  );
+
+	flag_init("lightkeeper_yard_to_lighthouse" );
+	flag_set( "lightkeeper_yard_to_lighthouse");
+
+	flag_init("lightkeeper_yard_to_bridge" );
+	flag_set( "lightkeeper_yard_to_bridge");
+
+	flag_init("lightkeeper_frontyard_to_house"  );
+	flag_set( "lightkeeper_frontyard_to_house" );
+
+	flag_init("lightkeeper_house_to_upstairs_balcony" );
+	flag_set("lightkeeper_house_to_upstairs_balcony" );
+
+	flag_init( "lightkeeper_bridge_to_road");
+	flag_set( "lightkeeper_bridge_to_road");
+
+	flag_init("lake_backyard_to_lightkeeper_road" );
+	flag_set( "lake_backyard_to_lightkeeper_road");
+
+	flag_init("upper_forest_cave_to_trainstation_bridge_crossing");
+	flag_set("upper_forest_cave_to_trainstation_bridge_crossing");
+
+	flag_init("trainstation_bridge_crossing_to_fix_location");
+	flag_set("trainstation_bridge_crossing_to_fix_location");
+
+	flag_init("trainstation_bridge_crossing_to_upper_trainstation_yard");
+	flag_set("trainstation_bridge_crossing_to_upper_trainstation_yard");
+
+	flag_init("trainstation_upper_yard_to_upper_yard_hillarea");
+	flag_set("trainstation_upper_yard_to_upper_yard_hillarea");
+	
+	flag_init("trainstation_upper_yard_hillarea_to_upper_hill_staircase");
+	flag_set("trainstation_upper_yard_hillarea_to_upper_hill_staircase");
+
+	//flag_init("");
+	//flag_set("");
+
+	//flag_init("");
+	//flag_set("");
+
+
+
 }
 
 zombie_deathvalley_initial_vision_trigger()
@@ -1026,7 +1101,7 @@ zombie_deathvalley_zone_init()
 	
 	add_adjacent_zone( "zone_fishing_factory_dock", "test_zone", "spawn_to_fishing_dock" );
 	
-	add_adjacent_zone( "zone_fishing_factory_dock", "zone_fishing_factory_upper_deck", "fishing_dock_to_outside_upstairs" );
+	
 	
 	add_adjacent_zone( "zone_fishing_factory_upper_deck", "zone_forest_bridge", "fishing_house_to_forest_bridge" );
 	
@@ -1070,6 +1145,51 @@ zombie_deathvalley_zone_init()
 	add_adjacent_zone( "zone_trainstation_building_lower_floor", "zone_trainstation_mudvalley_below_bridge", "station_mudvalley_to_lowerfloor" );
 
 	add_adjacent_zone( "zone_trainstation_mudvalley_below_bridge", "zone_trainstation_cave", "station_mudvalley_to_station_cave" );
+
+
+	//added to support the earlier volume additions
+	
+	add_adjacent_zone( "test_zone", "zone_lightkeeper_cave", "spawn_to_lightkeeper_cave" );
+
+	add_adjacent_zone( "zone_lightkeeper_cave", "zone_lightkeeper_yard", "keeper_cave_to_lightkeeper_yard" );
+	
+	add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_yard_front", "lightkeeper_yard_to_frontyard" );
+	
+	add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_lighthouse", "lightkeeper_yard_to_lighthouse" );
+
+	add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_bridge", "lightkeeper_yard_to_bridge" );
+	
+	add_adjacent_zone( "zone_lightkeeper_yard_front", "zone_lightkeeper_house", "lightkeeper_frontyard_to_house" );
+	
+	add_adjacent_zone( "zone_lightkeeper_house", "zone_lightkeeper_house_upstairs_balcony", "lightkeeper_house_to_upstairs_balcony" );
+
+	add_adjacent_zone( "zone_lightkeeper_bridge", "zone_lightkeeper_road", "lightkeeper_bridge_to_road" );
+	
+	add_adjacent_zone( "zone_crystal_lake_backyard", "zone_lightkeeper_road", "lake_backyard_to_lightkeeper_road" );
+
+
+
+	//additional fishing factory connections
+	add_adjacent_zone( "zone_fishing_factory_upper_deck", "zone_fishing_factory_dock_inner", "fishing_dock_upper_floor_to_inner_dock_yard" );
+	
+	add_adjacent_zone( "zone_fishing_factory_dock", "zone_fishing_factory_dock_lower_floor", "fishing_dock_to_lower_floor" );
+
+	add_adjacent_zone( "zone_fishing_factory_dock_lower_floor", "zone_fishing_factory_dock_inner", "fishing_factory_floor_to_inner_yard" );
+
+
+	//additional trainstation connections
+	//have to check if one connection from side is enough or if both are needed
+	//i.e now bridge crossing has a connection to trainstation fix location but not vice versa
+	//see if issues arise
+	add_adjacent_zone( "zone_forest_cave_upper", "zone_trainstation_bridge_crossing", "upper_forest_cave_to_trainstation_bridge_crossing" );
+	
+	add_adjacent_zone( "zone_trainstation_bridge_crossing", "zone_trainstation_fix_location", "trainstation_bridge_crossing_to_fix_location" );
+
+	add_adjacent_zone( "zone_trainstation_bridge_crossing", "zone_trainstation_upper_yard", "trainstation_bridge_crossing_to_upper_trainstation_yard" );
+	
+	add_adjacent_zone( "zone_trainstation_upper_yard", "zone_trainstation_upper_yard_hillarea", "trainstation_upper_yard_to_upper_yard_hillarea" );
+	
+	add_adjacent_zone( "zone_trainstation_upper_yard_hillarea", "zone_trainstation_upper_hill_staircase", "trainstation_upper_yard_hillarea_to_upper_hill_staircase" );
 	/*
 	add_adjacent_zone( "", "", "" );
 	
@@ -1374,7 +1494,7 @@ watchRainSFX()
         {
             if(!self.isInsideLoop)
             {
-                iprintln("Jugador isInSide");
+                iprintln(self.name + " is not catching rain anymore.");
                 self.isInsideLoop = true;
                 self.isOutsideLoop = false;
                 self StopLoopSound();
@@ -1385,7 +1505,7 @@ watchRainSFX()
         {
             if(!self.isOutsideLoop)
             {
-                iprintln("Jugador isOutSide");
+                iprintln(self.name + " is catching rain.");
                 self.isOutsideLoop = true;
                 self.isInsideLoop = false;
                 self StopLoopSound();

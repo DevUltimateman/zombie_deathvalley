@@ -348,7 +348,7 @@ rainy_night_dull()
 		sun_stop_ang, time, max_fog_opacity);
 		
 		SetSavedDvar( "r_skyColorTemp", 4500 );
-		VisionSetNaked( "vorkuta_warehouse", 0 );
+		VisionSetNaked( "vorkuta_warehouse", 2 );
 
 }
 
