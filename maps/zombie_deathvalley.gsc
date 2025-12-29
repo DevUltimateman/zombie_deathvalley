@@ -111,6 +111,8 @@ main()
 
 	init_zombie_deathvalley();
 	level.tweakfile = true;
+
+	
 	// Setup the levels Zombie Zone Volumes
 	maps\_compass::setupMiniMap("menu_map_zombie_deathvalley"); 
 	level.ignore_spawner_func = ::zombie_deathvalley_ignore_spawner;
@@ -180,7 +182,6 @@ main()
 	init_zones[init_zones.size] = "zone_fishing_factory_dock_inner";
 	init_zones[init_zones.size] = "zone_fishing_factory_dock_lower_floor";
 	init_zones[init_zones.size] = "zone_fishing_factory_dockside_stairs";
-	//add dock to lower floor adjacent check
 
 
 	//trainstation & yard additional volumes
@@ -188,6 +189,11 @@ main()
 	init_zones[init_zones.size] = "zone_trainstation_upper_yard";
 	init_zones[init_zones.size] = "zone_trainstation_upper_yard_hillarea";
 	init_zones[init_zones.size] = "zone_trainstation_upper_hill_staircase";
+
+
+	//additional train station upper yard zones & new building volume
+	init_zones[init_zones.size] = "zone_trainstation_upper_yard_house_office_side";
+	init_zones[init_zones.size] = "zone_trainstation_upper_yard_house_garage_side";
 	
 	
 	
@@ -437,6 +443,16 @@ zone_flag_hack_alphabuild()
 	
 	flag_init("trainstation_upper_yard_hillarea_to_upper_hill_staircase");
 	flag_set("trainstation_upper_yard_hillarea_to_upper_hill_staircase");
+
+
+	//additional upper_yard trainstation volumes
+	flag_init("trainstation_upper_yard_to_garage");
+	flag_set("trainstation_upper_yard_to_garage");
+
+	flag_init("trainstation_upper_yard_garage_to_office_side");
+	flag_set("trainstation_upper_yard_garage_to_office_side");
+
+
 
 	//flag_init("");
 	//flag_set("");
@@ -1190,6 +1206,13 @@ zombie_deathvalley_zone_init()
 	add_adjacent_zone( "zone_trainstation_upper_yard", "zone_trainstation_upper_yard_hillarea", "trainstation_upper_yard_to_upper_yard_hillarea" );
 	
 	add_adjacent_zone( "zone_trainstation_upper_yard_hillarea", "zone_trainstation_upper_hill_staircase", "trainstation_upper_yard_hillarea_to_upper_hill_staircase" );
+	
+	
+	
+	//additional yard zones for upper train station area
+
+	add_adjacent_zone( "zone_trainstation_upper_yard", "zone_trainstation_upper_yard_house_office_side", "trainstation_upper_yard_to_garage" );
+	add_adjacent_zone( "zone_trainstation_upper_yard_house_garage_side", "zone_trainstation_upper_yard_house_office_side", "trainstation_upper_yard_garage_to_office_side" );
 	/*
 	add_adjacent_zone( "", "", "" );
 	

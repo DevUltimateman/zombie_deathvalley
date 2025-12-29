@@ -273,7 +273,7 @@ dogs_fog_back_to_hell()
 		sun_stop_ang, time, max_fog_opacity);
 
 		SetSavedDvar( "r_skyColorTemp", 4500 );
-		VisionSetNaked( "vorkuta_warehouse", 0 );
+		VisionSetNaked( "vorkuta_warehouse", 2.5 );
 	}
 }
 
@@ -319,7 +319,7 @@ dogs_fog_back_to_normal()
 			sun_stop_ang, time, max_fog_opacity);
 			
 			SetSavedDvar( "r_skyColorTemp", 4500 );
-		VisionSetNaked( "vorkuta_warehouse", 0 );
+		VisionSetNaked( "vorkuta_warehouse", 2.5 );
 
 	}
 }
