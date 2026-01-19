@@ -461,7 +461,7 @@ zone_flag_hack_alphabuild()
 	//flag_set("");
 
 
-
+	attach
 }
 
 zombie_deathvalley_initial_vision_trigger()

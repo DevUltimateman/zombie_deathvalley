@@ -202,7 +202,12 @@ trap_play_fx( loc, trap_type )
 	self.loopFX = [];
 	
 }
+
+
+
+
 //  Replace the light models when the lights turn on and off
+//  models targetname must be pre set accordingly in radiant beforehand
 light_model_swap( name, model )
 {
 		level waittill( "pl1" );	// Power lights on
@@ -273,7 +278,7 @@ dogs_fog_back_to_hell()
 		sun_stop_ang, time, max_fog_opacity);
 
 		SetSavedDvar( "r_skyColorTemp", 4500 );
-		VisionSetNaked( "vorkuta_warehouse", 2.5 );
+		VisionSetNaked( "vorkuta_warehouse", 3 );
 	}
 }
 
@@ -319,7 +324,7 @@ dogs_fog_back_to_normal()
 			sun_stop_ang, time, max_fog_opacity);
 			
 			SetSavedDvar( "r_skyColorTemp", 4500 );
-		VisionSetNaked( "vorkuta_warehouse", 2.5 );
+		VisionSetNaked( "vorkuta_warehouse", 3.5 );
 
 	}
 }
