@@ -474,6 +474,7 @@ vision\vorkuta_warehouse.vision
 vision\zombie_deathvalley.vision
 vision\zombie_deathvalley1.vision
 vision\zombie_sumpf_dogs.vision
+vision_values_to_keep_in_mind.txt
 weapons\sp\zombie_perk_bottle
 weapons\sp\zombie_widows_grenade
 xmodel\veh_iw_pickup_technical
