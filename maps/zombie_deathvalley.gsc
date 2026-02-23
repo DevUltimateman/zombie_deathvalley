@@ -474,8 +474,8 @@ zombie_deathvalley_initial_vision_trigger()
 		thread maps\zombie_deathvalley_arts::rainy_night_dull();
 		
 		
-		who setclientdvar( "r_lighttweaksunlight", 13 ); //new
-		who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new
+		//who setclientdvar( "r_lighttweaksunlight", 13 ); //new **ON PAUSE!
+		//who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new **ON PAUSE!
 		who setclientdvar( "r_exposuretweak", true ); //new
 		who setclientdvar( "r_exposurevalue", 1.025 ); //new
 		who setclientdvar( "r_skyTransition", 1 );
@@ -483,11 +483,13 @@ zombie_deathvalley_initial_vision_trigger()
 		who setclientdvar( "sm_sunSampleSizeNear", "2.25" );
 		who setclientdvar( "r_skyColorTemp", 4500 ); //new
 		who setclientdvar( "r_sky_intensity_usedebugvalues", true ); //new
-		who setclientdvar( "r_sky_intensity_factor0", 5 ); //new
+		//who setclientdvar( "r_sky_intensity_factor0", 5 ); //new **ON PAUSE!
+
+		who setclientdvar( "r_sky_intensity_factor0", 1.8 ); //new
+		who setclientdvar( "r_lighttweaksuncolor", "0.4 0.3 0.3" ); //new
+		who setclientdvar( "r_lighttweaksunlight", 8 ); //new
 		who zombie_deathvalley_bloom_tweaks();
-		//self setclientdvar( "r_lighttweaksunlight", 14 );
-	//self setclientdvar( "r_lighttweaksuncolor", "0.2 0.3 0.35" );
-	//self setclientdvar( "r_exposurevalue", 1.025 );
+
 
 		wait 10;
 	}
