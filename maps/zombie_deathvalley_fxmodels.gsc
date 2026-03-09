@@ -22,19 +22,6 @@ insert_fxmodels_lightpole_orange_stick_glow()
    {
         playfx( level._effects["lightpole_orange_stick_glow"], targets[a].origin );
    }
-   /*
-   for( s = 0; s < targets.size; s++ )
-   {
-      target = targets[s];
-      if( target != undefined )
-      {
-        playFXOnTag("lightpole_orange_stick_glow", target, "tag_origin");
-        wait 0.05;
-
-      }
-   }
-   */
-   
-        iprintln("FX: lightpole_orange_stick_glow inserted on " + targets.size + " entities.");
+           iprintln("FX: lightpole_orange_stick_glow inserted on ^8" + targets.size + "^7 entities.");
    
 }
