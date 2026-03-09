@@ -11,6 +11,10 @@ include,rain
 fx,misc\fx_zombie_eye_single
 //Power Ups
 
+//CoolFxs
+fx,maps\wmd\fx_wmd_elem1_lights_runway
+
+
 
 //this hack works now
 clientscripts,zombie_deathvalley_fx

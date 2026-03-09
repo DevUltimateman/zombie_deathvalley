@@ -12,6 +12,10 @@ main()
 	level.tweakfile = true;
 	//TEST VOLUME AMB
 	//level thread initial_visuals();
+
+	maps\zombie_deathvalley_fxmodels::main();
+	
+
 	level thread zombie_deathvalley_initial_vision_trigger();
 	level thread zombie_deathvalley_vision_test();
 	level thread zombie_deathvalley_trigger_multiple_vision_test();
@@ -100,6 +104,8 @@ main()
 	//INITIAL VISUALS THREAD
 	thread all_players_ready_visuals();
 	
+	
+
 	
 	// maps\_zombiemode_timer::init();
 	
@@ -203,11 +209,15 @@ main()
 
 	init_sounds();
 	level thread add_powerups_after_round_1();
-
+	
 
 	SetSavedDvar( "r_skyColorTemp", 4500 );
 	level.zombie_visionset = "vorkuta_warehouse";
 	VisionSetNaked( "vorkuta_warehouse", 0 );
+
+	
+	flag_wait("all_players_spawned");
+	thread maps\zombie_deathvalley_fxmodels::insert_fxmodels_lightpole_orange_stick_glow();
 	//maps\zombie_theater_teleporter::teleport_pad_hide_use();
 
 	//level.round_number = 1245;
@@ -221,8 +231,9 @@ all_players_ready_visuals()
 	players = getplayers();
 	for( i = 0; i < players.size; i++ )
 	{
-		players[i] setclientdvar( "r_lighttweaksunlight", 13 ); //new
-		players[i] setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new
+		thread maps\zombie_deathvalley_arts::rainy_night_dull();
+		//who setclientdvar( "r_lighttweaksunlight", 13 ); //new **ON PAUSE!
+		//who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new **ON PAUSE!
 		players[i] setclientdvar( "r_exposuretweak", true ); //new
 		players[i] setclientdvar( "r_exposurevalue", 1.025 ); //new
 		players[i] setclientdvar( "r_skyTransition", 1 );
@@ -230,7 +241,11 @@ all_players_ready_visuals()
 		players[i] setclientdvar( "sm_sunSampleSizeNear", "2.25" );
 		players[i] setclientdvar( "r_skyColorTemp", 4500 ); //new
 		players[i] setclientdvar( "r_sky_intensity_usedebugvalues", true ); //new
-		players[i] setclientdvar( "r_sky_intensity_factor0", 5 ); //new
+		//who setclientdvar( "r_sky_intensity_factor0", 5 ); //new **ON PAUSE!
+
+		players[i] setclientdvar( "r_sky_intensity_factor0", 1.8 ); //new
+		players[i] setclientdvar( "r_lighttweaksuncolor", "0.4 0.3 0.3" ); //new
+		players[i] setclientdvar( "r_lighttweaksunlight", 8 ); //new
 		players[i] zombie_deathvalley_bloom_tweaks();
 	}
 		
@@ -459,9 +474,6 @@ zone_flag_hack_alphabuild()
 
 	//flag_init("");
 	//flag_set("");
-
-
-	attach
 }
 
 zombie_deathvalley_initial_vision_trigger()
