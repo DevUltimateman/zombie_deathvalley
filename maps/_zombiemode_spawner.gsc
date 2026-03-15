@@ -529,6 +529,7 @@ zombie_think()
 		self zombie_complete_emerging_into_playable_area();
 		return;	
 	}
+	
 	else
 	{
 		origin = self.origin;

@@ -16,9 +16,10 @@ main()
 	maps\zombie_deathvalley_fxmodels::main();
 	
 
-	level thread zombie_deathvalley_initial_vision_trigger();
-	level thread zombie_deathvalley_vision_test();
-	level thread zombie_deathvalley_trigger_multiple_vision_test();
+	//level thread zombie_deathvalley_initial_vision_trigger(); //SPAWN TRIGGER VISUAL
+
+	//level thread zombie_deathvalley_vision_test(); //triggers above sky
+	//&&level thread zombie_deathvalley_trigger_multiple_vision_test(); //above sky as well, thge other trigger
 	
 	//WEATHER_RAIN_FX
 	level._effect["lightning_strike"] = LoadFX( "maps/zombie/fx_zombie_lightning_flash" );
@@ -226,16 +227,21 @@ main()
 
 all_players_ready_visuals()
 {
-	thread maps\zombie_deathvalley_arts::rainy_night_dull();
+	
 	flag_wait( "all_players_spawned" );	
+	thread maps\zombie_deathvalley_arts::rainy_night_dull();
 	players = getplayers();
 	for( i = 0; i < players.size; i++ )
 	{
-		thread maps\zombie_deathvalley_arts::rainy_night_dull();
+		//thread maps\zombie_deathvalley_arts::rainy_night_dull();
 		//who setclientdvar( "r_lighttweaksunlight", 13 ); //new **ON PAUSE!
 		//who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new **ON PAUSE!
+		
 		players[i] setclientdvar( "r_exposuretweak", true ); //new
 		players[i] setclientdvar( "r_exposurevalue", 1.025 ); //new
+		players[i] setclientdvar( "r_lighttweaksuncolor", "0.4 0.3 0.3" ); //new
+		players[i] setclientdvar( "r_lighttweaksunlight", 8 ); //new
+		
 		players[i] setclientdvar( "r_skyTransition", 1 );
 		players[i] setClientDvar( "sm_sunShadowScale", .25 );
 		players[i] setclientdvar( "sm_sunSampleSizeNear", "2.25" );
@@ -244,8 +250,7 @@ all_players_ready_visuals()
 		//who setclientdvar( "r_sky_intensity_factor0", 5 ); //new **ON PAUSE!
 
 		players[i] setclientdvar( "r_sky_intensity_factor0", 1.8 ); //new
-		players[i] setclientdvar( "r_lighttweaksuncolor", "0.4 0.3 0.3" ); //new
-		players[i] setclientdvar( "r_lighttweaksunlight", 8 ); //new
+		
 		players[i] zombie_deathvalley_bloom_tweaks();
 	}
 		

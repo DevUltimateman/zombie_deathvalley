@@ -317,11 +317,11 @@ rainy_night_dull()
 	//This fog style could use r_skyColorTemp set to 4500 for some orangeish tint
 	//this fog style could use r_sky_intensity_factor0 set to 5 for a bit more brightness
 	//this fog style could use r_sky_intensity_usedebugvalues set to true
-	start_dist = 25.319;
-	half_dist = 1200.993; //normally 340 /increasing this val seemed to put the fog top lower
-	half_height = 2350;//1022.46; //increasing this semmed to put the fog medium a lot higher
+	start_dist = 500; //25 before march 11th 26
+	half_dist = 6200.993; //normally 340 /increasing this val seemed to put the fog top lower //1200 march 11th 26 before
+	half_height = 4350;//1022.46; //increasing this semmed to put the fog medium a lot higher
 	base_height = 100;//-1300.89;
-	fog_r = 0.629412;//first .value is doubled from previous
+	fog_r = 0.729412;//first .value is doubled from previous //originally before march 11th 2026, 0.620412
 	fog_g = 0.4815686;//first .value is doubled from previous
 	fog_b = 0.471373;//first .value is doubled from previous
 	fog_scale = 2.93566;
@@ -336,7 +336,7 @@ rainy_night_dull()
 	sun_dir_z = 0.589676;
 	sun_start_ang = 0;
 	sun_stop_ang = 90.4145;
-	time = 0;
+	time = 3;
 	max_fog_opacity = 0.9; //quite literally the transparentsetting of alpha fog
 	//higher = more dense fog, lower = less dense fog
 

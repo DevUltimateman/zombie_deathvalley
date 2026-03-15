@@ -254,24 +254,26 @@ dogs_fog_back_to_hell()
 		sun_stop_ang, time, max_fog_opacity);
 */
 //set up for the new bsp/and compensation for bloom
-	start_dist = 0;
-	half_dist = 1100;
-  	half_height = 1870;
-  	base_height = 451; //151
-  	fog_r = 0.635294;
-  	fog_g = 0.484314;
-  	fog_b = 0.252941;
-  	fog_scale = 1.13132;
-  	sun_col_r = 0.343137;
-	sun_col_g = 0.211765;
-	sun_col_b = 0.196078;
-	sun_dir_x = 0.958623;
-	sun_dir_y = -0.269662;
-	sun_dir_z = -0.0912419;
-	sun_start_ang = 0;
-	sun_stop_ang = 0;
-  	time = 5;
-  	max_fog_opacity = 1;
+	start_dist = 118.921;
+	half_dist = 500.01; //sep 16th, was 757.01, testing new value
+	half_height = 2000.331;//new old 2000.331
+	base_height = 500.23; //new old 500.23
+
+	//great with purple sunn
+	fog_r = 0.1488235;
+	fog_g = 0.111569;
+	fog_b = 0.25902;
+	fog_scale = 3.41725;
+	sun_col_r = 0.183137;
+	sun_col_g = 0.092157;
+	sun_col_b = 0.211765;
+	sun_dir_x = -0.360298;//-0.760298;
+	sun_dir_y = -0.339782;
+	sun_dir_z = 0.55362;
+	sun_start_ang = 19.4171;
+	sun_stop_ang = 79.2287;
+	time = 5;
+	max_fog_opacity = 0.734995;
 
 	setVolFog(start_dist, half_dist, half_height, base_height, fog_r, fog_g, fog_b, fog_scale,
 		sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
@@ -293,11 +295,14 @@ dogs_fog_back_to_normal()
 		//This fog style could use r_skyColorTemp set to 4500 for some orangeish tint
 	//this fog style could use r_sky_intensity_factor0 set to 5 for a bit more brightness
 	//this fog style could use r_sky_intensity_usedebugvalues set to true
-	start_dist = 25.319;
-	half_dist = 1200.993; //normally 340 /increasing this val seemed to put the fog top lower
-	half_height = 2350;//1022.46; //increasing this semmed to put the fog medium a lot higher
+	//This fog style could use r_skyColorTemp set to 4500 for some orangeish tint
+	//this fog style could use r_sky_intensity_factor0 set to 5 for a bit more brightness
+	//this fog style could use r_sky_intensity_usedebugvalues set to true
+	start_dist = 500; //25 before march 11th 26
+	half_dist = 6200.993; //normally 340 /increasing this val seemed to put the fog top lower //1200 march 11th 26 before
+	half_height = 4350;//1022.46; //increasing this semmed to put the fog medium a lot higher
 	base_height = 100;//-1300.89;
-	fog_r = 0.629412;//first .value is doubled from previous
+	fog_r = 0.729412;//first .value is doubled from previous //originally before march 11th 2026, 0.620412
 	fog_g = 0.4815686;//first .value is doubled from previous
 	fog_b = 0.471373;//first .value is doubled from previous
 	fog_scale = 2.93566;
@@ -312,19 +317,19 @@ dogs_fog_back_to_normal()
 	sun_dir_z = 0.589676;
 	sun_start_ang = 0;
 	sun_stop_ang = 90.4145;
-	time = 0;
+	time = 3;
 	max_fog_opacity = 0.9; //quite literally the transparentsetting of alpha fog
 	//higher = more dense fog, lower = less dense fog
 
 
 
 
-		setVolFog(start_dist, half_dist, half_height, base_height, fog_r, fog_g, fog_b, fog_scale,
-			sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
-			sun_stop_ang, time, max_fog_opacity);
-			
-			SetSavedDvar( "r_skyColorTemp", 4500 );
-		VisionSetNaked( "vorkuta_warehouse", 3.5 );
+	setVolFog(start_dist, half_dist, half_height, base_height, fog_r, fog_g, fog_b, fog_scale,
+		sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
+		sun_stop_ang, time, max_fog_opacity);
+		
+		SetSavedDvar( "r_skyColorTemp", 4500 );
+		VisionSetNaked( "vorkuta_warehouse", 2 );
 
 	}
 }

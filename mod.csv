@@ -46,6 +46,8 @@ xmodel,zombie_icon_boots
 xmodel,zombie_icon_thunder
 xmodel,zombie_icon_unlimited_ammo
 xmodel,zombie_z_money_icon
+
+xmodel,skybox_zombie_cosmodrome2
 //Custom Perks
 include,zombiemode_perks_custom
 include,zombiemode_origins_box
