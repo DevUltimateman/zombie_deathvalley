@@ -13,7 +13,19 @@ fx,misc\fx_zombie_eye_single
 
 //CoolFxs
 fx,maps\wmd\fx_wmd_elem1_lights_runway
+fx,env\foliage\fx_leaves_blowing
+fx,env\weather\fx_sand_windy_fast_sm
+fx,env\weather\fx_sand_windy_heavy
+fx,maps\zombie\fx_zmb_fog_lit_overhead_amber
+fx,maps\mp_maps\fx_mp_rain_fog_wall
+fx,maps\zombie_moon\fx_moon_fog_canyon
 
+fx,maps\zombie_temple\fx_ztem_fog_outdoor_lg
+fx,maps\mp_maps\fx_mp_drivein_fog_vista
+fx,maps\mp_maps\fx_mp_fog_ground_sm_w
+
+fx,env\fire\fx_embers_wind_md
+fx,maps\in_country\fx_ambient_embers
 
 
 //this hack works now

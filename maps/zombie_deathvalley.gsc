@@ -9,6 +9,9 @@
 
 main()
 {
+	
+
+
 	level.tweakfile = true;
 	//TEST VOLUME AMB
 	//level thread initial_visuals();
@@ -105,6 +108,8 @@ main()
 	//INITIAL VISUALS THREAD
 	thread all_players_ready_visuals();
 	
+	//CUSTOM GAME LOGIC THREADER?
+	//thread players_ready_start_gamelogic();
 	
 
 	
@@ -176,7 +181,7 @@ main()
 	init_zones[init_zones.size] = "zone_lightkeeper_cave";
 	init_zones[init_zones.size] = "zone_lightkeeper_yard";
 	init_zones[init_zones.size] = "zone_lightkeeper_yard_front";
-	init_zones[init_zones.size] = "zone_lightkeeper_lighthouse";
+	//init_zones[init_zones.size] = "zone_lightkeeper_lighthouse"; ultimateman_enable_back_when_radiant_build_Is_updated_to_allow_it
 	init_zones[init_zones.size] = "zone_lightkeeper_bridge";
 	init_zones[init_zones.size] = "zone_lightkeeper_house";
 	init_zones[init_zones.size] = "zone_lightkeeper_house_upstairs_balcony";
@@ -215,34 +220,148 @@ main()
 	SetSavedDvar( "r_skyColorTemp", 4500 );
 	level.zombie_visionset = "vorkuta_warehouse";
 	VisionSetNaked( "vorkuta_warehouse", 0 );
-
 	
 	flag_wait("all_players_spawned");
 	thread maps\zombie_deathvalley_fxmodels::insert_fxmodels_lightpole_orange_stick_glow();
+	thread maps\zombie_deathvalley_fxmodels::spawn_leaves_for_clients();
+	
 	//maps\zombie_theater_teleporter::teleport_pad_hide_use();
 
 	//level.round_number = 1245;
 }
 
 
+
+players_ready_start_gamelogic()
+{
+	flag_wait( "all_players_spawned" );
+	thread testcoins();
+}
+
+testcoins()
+{
+	level endon("end_game");
+	testcoin_rotate = getent( "testcoin_rotate", "targetname" );
+	while( true )
+	{
+		testcoin_rotate RotateYaw(360, 2, 0, 0 );
+		wait 2;
+	}
+}
+
+
+//animating foliage with pre-existing properties. names to put in radiant instead of those non animated ones;
+/*
+t5_foliage_bush02
+t5_foliage_bush06
+t5_foliage_bush06a
+t5_foliage_bush06b
+t5_foliage_bush08b
+drv_foliage_grass02_short
+p_gc_foliage_bougainvillea
+p_gc_foliage_eve_sun
+mp_munich_foliage_plants_flowers_04
+mp_munich_foliage_plants_flowers_05
+p_gc_foliage_yellow_m_glory
+t5_foliage_plants_tropic04
+t5_foliage_plants_tropic03
+t5_foliage_plants_tropic02
+t5_foliage_plants_tropic01a
+t5_foliage_plants_tropic05
+t5_foliage_plants_tropic06
+t5_foliage_plants_tropic07
+t5_foliage_plants_pond06
+foliage_pacific_fern01
+foliage_pacific_fern02
+t5_foliage_grass07a_short
+t5_foliage_grass07_grp_short
+t5_foliage_grass06_short_noshadow
+t5_foliage_grass05_short
+t5_foliage_grass04_short
+t5_foliage_grass03_short
+t5_foliage_grass02_short
+t5_foliage_grass01_short
+t5_foliage_shrubs01
+t5_foliage_shrubs02
+t5_foliage_shrubs03a
+t5_foliage_shrub_desert01_windy
+t5_foliage_plants_pond05
+t5_foliage_plants_pond04
+t5_foliage_plants_pond02
+t5_foliage_plants_leaf09
+t5_foliage_plants_flowers06
+t5_foliage_plants_flowers05
+t5_foliage_plants_flowers03
+t5_foliage_plants_flowers02
+t5_foliage_plants_flowers01
+
+//Trees
+foliage_cod5_tree_willow_01
+foliage_cod5_tree_willow_01a
+foliage_cod5_tree_willow_02
+foliage_oki2_tree_jungle
+t5_foliage_tree_aspen01a
+p_slo_t5_foliage_tree_pine01
+t5_foliage_tree_pine02
+
+t5_foliage_tree_banana01
+t5_foliage_tree_bare01a
+t5_foliage_tree_bamboo03
+t5_foliage_tree_bamboo02
+t5_foliage_tree_bamboo01
+t5_foliage_tree_aspen01c
+
+t5_foliage_tree_bare03
+t5_foliage_tree_bare02
+t5_foliage_tree_elm01
+t5_foliage_tree_elm02_noroots
+t5_foliage_tree_eucalyptus01
+t5_foliage_tree_eucalyptus04
+t5_foliage_tree_jungle01
+t5_foliage_tree_jungle02
+t5_foliage_tree_jungle03
+
+t5_foliage_tree_sorbus02
+t5_foliage_tree_sorbus03
+t5_foliage_tree_sorbus01
+t5_foliage_tree_group01
+
+
+
+
+
+
+*/
 all_players_ready_visuals()
 {
 	
 	flag_wait( "all_players_spawned" );	
-	thread maps\zombie_deathvalley_arts::rainy_night_dull();
+	thread maps\zombie_deathvalley_arts::rainy_orange_hazy_dull();
 	players = getplayers();
 	for( i = 0; i < players.size; i++ )
 	{
-		//thread maps\zombie_deathvalley_arts::rainy_night_dull();
+		//thread maps\zombie_deathvalley_arts::rainy_orange_hazy_dull();
 		//who setclientdvar( "r_lighttweaksunlight", 13 ); //new **ON PAUSE!
 		//who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new **ON PAUSE!
-		
+		//main globals here for testing
+		players[i] setclientdvar("wind_local_amplitude", "3 3 3 0" );
+		players[i] setclientdvar("wind_local_frequency", "12 12 12" );
+		players[i] setclientdvar("wind_global_hi_altitude", 1000 );
+		players[i] setclientdvar("wind_global_lo_altitude", 1700 );
+		players[i] setclientdvar("wind_global_vector", "185 -135 170");
+		//players[i] setclientdvar("wind_global_vector", "135 135 135");
+		players[i] setclientdvar("wind_global_low_strength_percent", -1 );
+		players[i] setclientdvar( "r_waterWaveAmplitude", "4 0 0 0");
+		players[i] setclientdvar( "r_waterWaveAngle", "20 0 0 0");
+		players[i] setclientdvar( "r_waterWavephase", "0.25 0 0 0");
+		players[i] setclientdvar( "r_waterWaveSteepness", "0.25 0 0 0");
+		players[i] setclientdvar( "r_waterwaveWaveLength", "500 500 1 1");
+
 		players[i] setclientdvar( "r_exposuretweak", true ); //new
-		players[i] setclientdvar( "r_exposurevalue", 1.025 ); //new
+		players[i] setclientdvar( "r_exposurevalue", 1 ); //new
 		players[i] setclientdvar( "r_lighttweaksuncolor", "0.4 0.3 0.3" ); //new
-		players[i] setclientdvar( "r_lighttweaksunlight", 8 ); //new
-		
-		players[i] setclientdvar( "r_skyTransition", 1 );
+		players[i] setclientdvar( "r_lighttweaksunlight", 12 ); //new, org 8?
+		//players[i] setclientdvar( "r_skyTransition", 1 ); not suitable for cosmodromev2 skybox
 		players[i] setClientDvar( "sm_sunShadowScale", .25 );
 		players[i] setclientdvar( "sm_sunSampleSizeNear", "2.25" );
 		players[i] setclientdvar( "r_skyColorTemp", 4500 ); //new
@@ -252,6 +371,9 @@ all_players_ready_visuals()
 		players[i] setclientdvar( "r_sky_intensity_factor0", 1.8 ); //new
 		
 		players[i] zombie_deathvalley_bloom_tweaks();
+
+		players[i] SetWaterDrops( 42 ); //50 is engine max, see if its too much
+		//works just fine but maybe fine tune from 50 to abit lower?
 	}
 		
 }
@@ -431,8 +553,8 @@ zone_flag_hack_alphabuild()
 	flag_init( "lightkeeper_yard_to_frontyard" );
 	flag_set("lightkeeper_yard_to_frontyard"  );
 
-	flag_init("lightkeeper_yard_to_lighthouse" );
-	flag_set( "lightkeeper_yard_to_lighthouse");
+	//flag_init("lightkeeper_yard_to_lighthouse" ); ultimateman_enable_back_when_radiant_build_Is_updated_to_allow_it
+	//flag_set( "lightkeeper_yard_to_lighthouse"); ultimateman_enable_back_when_radiant_build_Is_updated_to_allow_it
 
 	flag_init("lightkeeper_yard_to_bridge" );
 	flag_set( "lightkeeper_yard_to_bridge");
@@ -488,8 +610,20 @@ zombie_deathvalley_initial_vision_trigger()
 	while( true )
 	{
 		switcher waittill( "trigger", who );
-		thread maps\zombie_deathvalley_arts::rainy_night_dull();
+		thread maps\zombie_deathvalley_arts::rainy_orange_hazy_dull();
 		
+		//main globals here for testing
+		who setclientdvar("wind_local_amplitude", "3 3 3 0" );
+		who setclientdvar("wind_local_frequency", "12 12 12" );
+		who setclientdvar("wind_global_hi_altitude", 4500 );
+		who setclientdvar("wind_global_lo_altitude", 1700 );
+		who setclientdvar("wind_global_vector", "135 135 135");
+		who setclientdvar("wind_global_low_strength_percent", -1 );
+		who setclientdvar( "r_waterWaveAmplitude", "4 0 0 0");
+		who setclientdvar( "r_waterWaveAngle", "20 0 0 0");
+		who setclientdvar( "r_waterWavephase", "0.25 0 0 0");
+		who setclientdvar( "r_waterWaveSteepness", "0.25 0 0 0");
+		who setclientdvar( "r_waterwaveWaveLength", "500 500 1 1");
 		
 		//who setclientdvar( "r_lighttweaksunlight", 13 ); //new **ON PAUSE!
 		//who setclientdvar( "r_lighttweaksuncolor", "0.2 0.2 0.3" ); //new **ON PAUSE!
@@ -503,8 +637,9 @@ zombie_deathvalley_initial_vision_trigger()
 		//who setclientdvar( "r_sky_intensity_factor0", 5 ); //new **ON PAUSE!
 
 		who setclientdvar( "r_sky_intensity_factor0", 1.8 ); //new
-		who setclientdvar( "r_lighttweaksuncolor", "0.4 0.3 0.3" ); //new
+		who setclientdvar( "r_lighttweaksuncolor", "0.45 0.3 0.3" ); //new
 		who setclientdvar( "r_lighttweaksunlight", 8 ); //new
+		//who setclientdvar( "r_lighttweaksundirection", "-45 240 0" ); might not try
 		who zombie_deathvalley_bloom_tweaks();
 
 
@@ -1190,7 +1325,7 @@ zombie_deathvalley_zone_init()
 	
 	add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_yard_front", "lightkeeper_yard_to_frontyard" );
 	
-	add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_lighthouse", "lightkeeper_yard_to_lighthouse" );
+	//add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_lighthouse", "lightkeeper_yard_to_lighthouse" ); ultimateman_enable_back_when_radiant_build_Is_updated_to_allow_it
 
 	add_adjacent_zone( "zone_lightkeeper_yard", "zone_lightkeeper_bridge", "lightkeeper_yard_to_bridge" );
 	

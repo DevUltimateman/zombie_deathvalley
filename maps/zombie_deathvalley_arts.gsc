@@ -312,24 +312,24 @@ orange_sunny_evening_vision()
 	visionSetNaked("rebirth_cargo_container", 2 );
 }
 
-rainy_night_dull()
+rainy_orange_hazy_dullfffff()
 {
 	//This fog style could use r_skyColorTemp set to 4500 for some orangeish tint
 	//this fog style could use r_sky_intensity_factor0 set to 5 for a bit more brightness
 	//this fog style could use r_sky_intensity_usedebugvalues set to true
-	start_dist = 500; //25 before march 11th 26
-	half_dist = 6200.993; //normally 340 /increasing this val seemed to put the fog top lower //1200 march 11th 26 before
-	half_height = 4350;//1022.46; //increasing this semmed to put the fog medium a lot higher
-	base_height = 100;//-1300.89;
-	fog_r = 0.729412;//first .value is doubled from previous //originally before march 11th 2026, 0.620412
-	fog_g = 0.4815686;//first .value is doubled from previous
-	fog_b = 0.471373;//first .value is doubled from previous
-	fog_scale = 2.93566;
+	start_dist = 300; //25 before march 11th 26
+	half_dist = 2200.993; //normally 340 /increasing this val seemed to put the fog top lower //1200 march 11th 26 before //before august 26, 6200 units
+	half_height = 4350;//1022.46; //increasing this semmed to put the fog medium a lot higher 4300
+	base_height = 1900;//-1300.89; //100 before august 26,  units§
+	fog_r = 0.429412;// 0.729412first is the reddish value, this is now pretty gray
+	fog_g = 0.3315686;//first .value is doubled from previous
+	fog_b = 0.271373;//grayish fog 0.371373, now trying more yellowish
+	fog_scale = 1.12; //2.93566; july 21th, 2026
 	//sun_col_r = 0.996078;
 	//sun_col_g = 0.811765;
 	//sun_col_b = 0.47451;
-	sun_col_r = 0.416078; //first .value is doubled from previous
-	sun_col_g = 0.211765;//first .value is doubled from previous
+	sun_col_r = 0.486078; //first .value is doubled from previous 0.416078; for more yellowish
+	sun_col_g = 0.241765;//first .value is doubled from previous 0.311765
 	sun_col_b = 0.19451;//first .value is doubled from previous
 	sun_dir_x = -0.395724;
 	sun_dir_y = 0.704049;
@@ -337,7 +337,47 @@ rainy_night_dull()
 	sun_start_ang = 0;
 	sun_stop_ang = 90.4145;
 	time = 3;
-	max_fog_opacity = 0.9; //quite literally the transparentsetting of alpha fog
+	max_fog_opacity = 1; //quite literally the transparentsetting of alpha fog
+	//higher = more dense fog, lower = less dense fog
+
+
+
+
+	setVolFog(start_dist, half_dist, half_height, base_height, fog_r, fog_g, fog_b, fog_scale,
+		sun_col_r, sun_col_g, sun_col_b, sun_dir_x, sun_dir_y, sun_dir_z, sun_start_ang, 
+		sun_stop_ang, time, max_fog_opacity);
+		
+		SetSavedDvar( "r_skyColorTemp", 4500 );
+		VisionSetNaked( "vorkuta_warehouse", 2 );
+
+}
+
+rainy_orange_hazy_dull()
+{
+	//This fog style could use r_skyColorTemp set to 4500 for some orangeish tint
+	//this fog style could use r_sky_intensity_factor0 set to 5 for a bit more brightness
+	//this fog style could use r_sky_intensity_usedebugvalues set to true
+	start_dist = 300; //25 before march 11th 26
+	half_dist = 3800.993; //normally 340 /increasing this val seemed to put the fog top lower //1200 march 11th 26 before
+	half_height = 3350;//1022.46; //increasing this semmed to put the fog medium a lot higher
+	base_height = -400;//-1300.89;
+	fog_r = 0.429412;// 0.729412first is the reddish value, this is now pretty gray
+	fog_g = 0.3315686;//first .value is doubled from previous
+	fog_b = 0.271373;//grayish fog 0.371373, now trying more yellowish
+	fog_scale = 6.12; //2.93566; july 21th, 2026 //4.12 july 25th
+	//sun_col_r = 0.996078;
+	//sun_col_g = 0.811765;
+	//sun_col_b = 0.47451;
+	sun_col_r = 0.486078; //first .value is doubled from previous 0.416078; for more yellowish
+	sun_col_g = 0.251765;//first .value is doubled from previous 0.311765
+	sun_col_b = 0.19451;//first .value is doubled from previous
+	sun_dir_x = -0.395724;
+	sun_dir_y = 0.704049;
+	sun_dir_z = 0.589676;
+	sun_start_ang = 0;
+	sun_stop_ang = 120.4145; //90.4145;
+	time = 3;
+	max_fog_opacity = 0.95; //quite literally the transparentsetting of alpha fog
 	//higher = more dense fog, lower = less dense fog
 
 

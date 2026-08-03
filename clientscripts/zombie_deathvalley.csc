@@ -3,6 +3,7 @@
 #include clientscripts\_zombiemode_weapons;
 main()
 {
+	
 	level._uses_crossbow = true;
 	
 	// ww: thundergun init happens in _zombiemode.csc so the weapons need to be setup before _zombiemode::main is
@@ -16,12 +17,15 @@ main()
 	
 	// This needs to be called after all systems have been registered.
 	thread waitforclient(0);	
+
 	
 	level._power_on = false;
 	
 	
 	register_zombie_types();
 }
+
+
 register_zombie_types()
 {
 	character\clientscripts\c_ger_honorguard_zt::register_gibs();	
